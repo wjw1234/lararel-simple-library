@@ -22,33 +22,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-Route::get('dashboard', [
-    'middleware' => 'auth',
-    'uses' => 'AdminController@home'
-]);
-
-/*
-auth examples:
-
-// Using A Route Closure...
-
-Route::get('profile', ['middleware' => 'auth', function() {
-    // Only authenticated users may enter...
-}]);
-
-// Using A Controller...
-
-Route::get('profile', [
-    'middleware' => 'auth',
-    'uses' => 'ProfileController@show'
-]);
-
-if (Auth::attempt(['email' => $email, 'password' => $password], $remember)) {
-    // The user is being remembered...
-}
-
-if (Auth::viaRemember()) {
-    //
-}
-
-*/
+// only logged in users
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('dashboard', 'AdminController@home');
+    Route::get('dashboard/book/{id}', 'AdminController@book');
+    Route::get('dashboard/settings', 'AdminController@settings');
+});
