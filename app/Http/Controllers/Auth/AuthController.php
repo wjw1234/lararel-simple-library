@@ -10,6 +10,12 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
+    // throttle logins
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+
+    protected $redirectPath = '/dashboard';
+    protected $loginPath = '/login';
+
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
