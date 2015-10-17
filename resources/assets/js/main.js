@@ -80,13 +80,15 @@ $('#saveLayout').on('click',function(){
 			image_id = image_id.replace(/[^0-9.]/g, '');
 			images.push(image_id);
 		});
-		array.push({id: id, images: images});
+		array.push({'id': id, 'images': images});
 	});
 	var url = window.location.href;
-	var data = array;
+	var token = $('meta[name="csrf-token"]').attr('content');
+	alert(token);
+	var data = {'_token': token, 'json': JSON.stringify(array)};
 	$.post(url, data,
 		function(){
-			alert(data);
+			
 		},
 	'json');
 });

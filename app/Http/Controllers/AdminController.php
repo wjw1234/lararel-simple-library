@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Book;
 use App\File;
 use App\Slide;
+use App\SlideImage;
 
 use Response;
 
@@ -58,6 +59,7 @@ class AdminController extends Controller
     	$slide = Slide::where('id', $id);
     	if ($slide) {
     		$slide->delete();
+            SlideImage::where('slide_id', $id)->delete();
     		$result = true;
     	}
     	return response::json(array('result'=>$result));
@@ -113,6 +115,27 @@ class AdminController extends Controller
     		$i->save();
     	}
     	return redirect('/dashboard/images');
+    }
+
+    public function bookSave(Request $request,$book_id) {
+        $json = $request->input('json');
+        $object = json_decode($json);
+        foreach ($object as $slideOrder=>$slideObject) {
+            $slide_id = $slideObject->id;
+            $slide = Slide::where('id', $slide_id)->first();
+            if ($slide) {
+                $slide->order = $slideOrder;
+                $slide->save();
+                SlideImage::where('slide_id', $slide_id)->delete();
+                foreach ($slideObject->images as $imageOrder => $image_id) {
+                    $slideImage = new SlideImage;
+                    $slideImage->image_id = $image_id;
+                    $slideImage->slide_id = $slide_id;
+                    $slideImage->order = $imageOrder;
+                    $slideImage->save();
+                }
+            }
+        }
     }
 
 }

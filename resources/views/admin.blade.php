@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{elixir("css/app.css")}}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
     <body class="admin">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

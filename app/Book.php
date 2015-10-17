@@ -12,7 +12,7 @@ class Book extends Model {
     use SoftDeletes;
 
     public function slides() {
-    	return $this->hasMany('App\Slide');
+    	return $this->hasMany('App\Slide')->orderBy('order', 'ASC');
     }
 
 }

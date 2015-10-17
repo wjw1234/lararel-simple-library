@@ -20,7 +20,13 @@
     	<h2>Slides<a href="#" id="addSlide" data-id="{!! $currentbook->id !!}">+</a></h2>
     	<ul id="slides">
     		@foreach ($currentbook->slides as $slide)
-    			<li class="slide" id="slide-{!! $slide->id !!}"><span class="drag-handle">☰</span><ul id="slide-content-{!! $slide->id !!}"></ul><a href="#" class="remove-slide">Remove</a></li>
+    			<li class="slide" id="slide-{!! $slide->id !!}">
+    				<span class="drag-handle">☰</span>
+    				<ul id="slide-content-{!! $slide->id !!}">
+    					@foreach ($slide->images as $image)<li id="image-{!! $image->file->id !!}"><span style="background-image:url(/images/uploaded/{!! $image->file->file !!});"></span></li>@endforeach
+    				</ul>
+    				<a href="#" class="remove-slide">Remove</a>
+    			</li>
     		@endforeach
     	</ul>
     	<button id="saveLayout" class="btn btn-primary">Save</button>
