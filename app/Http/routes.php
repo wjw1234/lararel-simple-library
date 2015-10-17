@@ -27,4 +27,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'AdminController@home');
     Route::get('dashboard/book/{id}', 'AdminController@book');
     Route::get('dashboard/settings', 'AdminController@settings');
+    Route::get('dashboard/images', 'AdminController@images');
+    Route::post('dashboard/images', 'AdminController@uploadImage');
+    Route::get('dashboard/images/{id}', 'AdminController@image');
+    
 });

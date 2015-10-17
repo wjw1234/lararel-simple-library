@@ -12,4 +12,4 @@ Homestead.json
 /public/build/fonts/*
 /public/build/js/*
 /public/build/rev-manifest.json
-
+/public/images/uploaded/*
