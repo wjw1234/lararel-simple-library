@@ -1,9 +1,62 @@
+$lightgray: #ccc;
+
 body.admin {
 	padding-top: 70px;
 
 	.image-table {
 		img {
 			width: 100px;
+		}
+	}
+
+	#images {
+		background-color: $lightgray;
+		padding: 0 4px 0 0;
+		margin: 0;
+		display: inline-block;
+	}
+
+	#images li, #slides .slide ul li {
+		width: 50px;
+		height: 50px;
+		display: inline-block;
+		cursor: pointer;
+		margin: 4px 0 0 4px;
+		span {
+			background-color: #fff;
+			background-size: cover;
+			width: 100%;
+			height: 100%;
+			display: block;
+			background-position: center center;
+		}	
+	}
+
+	#slides {
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+		li {
+			position: relative;
+			.drag-handle {
+				position: absolute;
+				top: 0;
+			}
+		}
+		ul {
+			width: 100%;
+			display: block;
+			min-height: 59px;
+			background-color: $lightgray;
+			padding: 0;
+			margin: 0;
+			margin-left: 20px;
+		}
+	}
+
+	#slides {
+		.drag-handle {
+			cursor: pointer;
 		}
 	}
 

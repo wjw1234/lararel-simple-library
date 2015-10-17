@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\File;
+use App\Slide;
+
+use Response;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -28,7 +31,7 @@ class AdminController extends Controller
 
     public function book($id) {
     	$book = Book::where('id',$id)->firstOrFail();
-        return view('admin.book', ['currentbook'=>$book,'books'=>$this->books]);
+        return view('admin.book', ['currentbook'=>$book,'books'=>$this->books,'images'=>$this->files]);
     }
 
     public function settings() {
@@ -41,6 +44,23 @@ class AdminController extends Controller
 
     public function image($id) {
         return view('admin.image', ['currentbook'=>$id,'books'=>$this->books]);
+    }
+
+    public function slideCreate($id) {
+    	$slide = new Slide;
+    	$slide->book_id = intval($id);
+    	$slide->save();
+    	return response::json(array('id'=>$slide->id));
+    }
+
+    public function slideDelete($id) {
+    	$result = false;
+    	$slide = Slide::where('id', $id);
+    	if ($slide) {
+    		$slide->delete();
+    		$result = true;
+    	}
+    	return response::json(array('result'=>$result));
     }
 
     static public function generateRandomString($length = 10) {
