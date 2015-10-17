@@ -6,6 +6,7 @@ use App\Book;
 use App\File;
 use App\Slide;
 use App\SlideImage;
+use App\Setting;
 
 use Response;
 
@@ -36,7 +37,8 @@ class AdminController extends Controller
     }
 
     public function settings() {
-    	return view('admin.settings', ['page'=>'settings','books'=>$this->books]);
+        $s = Setting::first();
+    	return view('admin.settings', ['page'=>'settings','books'=>$this->books,'settings'=>$s]);
     }
 
     public function images() {
@@ -136,6 +138,16 @@ class AdminController extends Controller
                 }
             }
         }
+    }
+
+    public function settingsSave(Request $request) {
+        $s = Setting::first();
+        if (!$s) {
+            $s = new Setting();
+        }
+        $s->fill($request->all());
+        $s->save();
+        return redirect('/dashboard/settings');
     }
 
 }
