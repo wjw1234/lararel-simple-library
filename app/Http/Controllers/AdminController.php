@@ -20,7 +20,6 @@ class AdminController extends Controller
     protected $slides;
     protected $files;
 
-
     public function __construct()
     {
         $this->books = Book::get();

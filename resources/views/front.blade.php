@@ -13,7 +13,19 @@
         <link rel="stylesheet" href="{{elixir("css/app.css")}}">
     </head>
     <body>
-        
+
+<ul>
+    @foreach ($books as $book)
+        <li class="{!! isset($currentbook) && $currentbook->id == $book->id ? 'active' : null !!}"><a href="/book/{!! $book->id  !!}">{!! $book->title !!}</a></li>
+    @endforeach
+</ul>
+
+    @foreach ($currentbook->slides as $slide)
+        @foreach ($slide->images as $image)
+            <img src="{!! url('/images/uploaded/'.$image->file->file) !!}" />
+        @endforeach
+    @endforeach
+
         @yield('content')
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
