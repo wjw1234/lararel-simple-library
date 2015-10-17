@@ -1,5 +1,15 @@
 /vendor
 /node_modules
+/bower_components
 Homestead.yaml
 Homestead.json
 .env
+.idea/*
+/public/css/*
+/public/js/*
+/public/fonts/*
+/public/build/css/*
+/public/build/fonts/*
+/public/build/js/*
+/public/build/rev-manifest.json
+
