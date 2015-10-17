@@ -13,14 +13,20 @@ class FrontController extends Controller
     	$settings = Setting::first();
     	$books = Book::get();
     	$currentbook = Book::first();
-        return view('front.home', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+        return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
     }
 
     public function book($id) {
     	$settings = Setting::first();
     	$books = Book::get();
     	$currentbook = Book::where('id', $id)->firstOrFail();
-    	return view('front.home', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+    	return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+    }
+
+    public function info() {
+    	$settings = Setting::first();
+    	$books = Book::get();
+    	return view('front.info', ['books'=>$books, 'settings'=>$settings]);
     }
 
 

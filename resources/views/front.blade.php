@@ -20,12 +20,6 @@
     @endforeach
 </ul>
 
-    @foreach ($currentbook->slides as $slide)
-        @foreach ($slide->images as $image)
-            <img src="{!! url('/images/uploaded/'.$image->file->file) !!}" />
-        @endforeach
-    @endforeach
-
         @yield('content')
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
