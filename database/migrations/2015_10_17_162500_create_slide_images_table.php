@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidesTable extends Migration
+class CreateSlideImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,12 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
+        Schema::create('slide_images', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("book_id");
+            $table->integer("slide_id");
+            $table->integer("image_id");
             $table->integer("order");
             $table->timestamps();
-            //$table->softDeletes();
         });
     }
 
@@ -28,6 +28,6 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('slides');
+        Schema::drop('slide_images');
     }
 }

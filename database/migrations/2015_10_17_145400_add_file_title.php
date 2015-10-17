@@ -13,7 +13,7 @@ class AddFileTitle extends Migration
     public function up()
     {
     	Schema::table('files', function ($table) {
-            $table->text('title')->after('file');
+            $table->text('title')->after('file')->nullable();
         });
     }
 
