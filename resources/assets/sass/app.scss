@@ -1,4 +1,50 @@
 $lightgray: #ccc;
+$darktext: #333;
+$darklesstext: #444;
+
+body.main {
+	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	margin-top: 40px;
+	h1 {
+		font-size: 16px;
+		font-weight: bold;
+		padding: 0;
+		margin: 0 0 20px 0;
+		color: $darktext;
+	}
+	ul.menu {
+		list-style-type: none;
+		padding: 0;
+		margin: 0;
+		li {
+			a {
+				color: $darktext;
+				}
+			ul {
+				list-style-type: none;
+				margin: 0 0 10px 30px;
+				padding: 0;
+				li {
+					a {
+						color: $darktext;
+					}
+				}
+			}
+		}
+	}
+	.social {
+		margin-left: 30px;
+		margin-top: 30px;
+		a {
+			font-size: 40px;
+			margin: 5px;
+			color: $darklesstext;
+		}
+	}
+	.content {
+		margin-top: 40px;
+	}
+}
 
 body.admin {
 	padding-top: 70px;
