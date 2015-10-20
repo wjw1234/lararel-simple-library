@@ -9,6 +9,6 @@ class Setting extends Model {
 
     protected $table = 'site_settings';
 
-    protected $fillable = array('video_url', 'phone', 'email');
+    protected $fillable = array('fax', 'address', 'site_title', 'video_url', 'phone', 'email', 'instagram', 'tumblr');
 
 }
