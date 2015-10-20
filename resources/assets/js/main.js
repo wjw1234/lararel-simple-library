@@ -92,7 +92,6 @@ $('#saveLayout').on('click',function(){
 	});
 	var url = window.location.href;
 	var token = $('meta[name="csrf-token"]').attr('content');
-	alert(token);
 	var data = {'_token': token, 'json': JSON.stringify(array)};
 	$.post(url, data,
 		function(){
