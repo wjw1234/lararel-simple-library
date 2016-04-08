@@ -25,8 +25,9 @@ class FrontController extends Controller
     public function home() {
     	$settings = Setting::first();
     	$books = Book::get();
+      if (!count($books)) return redirect('/dashboard');
     	$currentbook = Book::first();
-        return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+      return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
     }
 
     public function book($id) {
