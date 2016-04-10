@@ -99,3 +99,25 @@ $('#saveLayout').on('click',function(){
 		},
 	'json');
 });
+
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		navigation: false,
+		anchors: ['about', 'services', 'gallery', 'contact'],
+	});
+});
+
+$('.navbar-nav a').on('click', function(e){
+	e.preventDefault();
+	var section = $(this).attr('data-section');
+	$.fn.fullpage.moveTo(parseInt(section, 10));
+});
+
+$(window).on('hashchange',function(){ 
+    $('.navbar-nav li').each(function() {
+		$(this).removeClass('active');
+		if ($(this).attr('data-name') == window.location.hash.replace('#','')) {
+			$(this).addClass('active');
+		}
+	});
+});

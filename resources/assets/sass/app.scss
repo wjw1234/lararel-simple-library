@@ -3,8 +3,12 @@ $darktext: #333;
 $darklesstext: #444;
 
 body.main {
+	.section {
+		text-align: center;
+	}
+	/*
 	font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	margin-top: 40px;
+	margin-top: 0px;
 	h1 {
 		font-size: 16px;
 		font-weight: bold;
@@ -44,6 +48,7 @@ body.main {
 	.content {
 		margin-top: 40px;
 	}
+	*/
 }
 
 body.admin {
