@@ -101,13 +101,15 @@ $('#saveLayout').on('click',function(){
 });
 
 $(document).ready(function() {
-	$('#fullpage').fullpage({
-		navigation: false,
-		anchors: ['about', 'services', 'gallery', 'contact'],
-	});
+	if ($('#fullpage').length) {
+		$('#fullpage').fullpage({
+			navigation: false,
+			anchors: ['about', 'services', 'gallery', 'contact'],
+		});
+	}
 });
 
-$('.navbar-nav a').on('click', function(e){
+$('#fullpage-menu .navbar-nav a').on('click', function(e){
 	e.preventDefault();
 	var section = $(this).attr('data-section');
 	$.fn.fullpage.moveTo(parseInt(section, 10));

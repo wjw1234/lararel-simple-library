@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSlidesTable extends Migration
+class ModBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,8 @@ class CreateSlidesTable extends Migration
      */
     public function up()
     {
-        Schema::create('slides', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer("book_id");
-            $table->integer("order");
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::table('books', function (Blueprint $table) {
+            $table->integer("default_image_id")->nullable()->after('title');
         });
     }
 
@@ -28,6 +24,8 @@ class CreateSlidesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('slides');
+        Schema::table('books', function (Blueprint $table) {
+            $table->dropColumn('default_image_id');
+        });
     }
 }

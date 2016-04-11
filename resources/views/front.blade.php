@@ -28,7 +28,7 @@
                 <a class="navbar-brand">Hammer Lab</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="fullpage-menu">
                     <li data-name="about" class="active"><a href="#" data-section="1">About</a></li>
                     <li data-name="services"><a href="#" data-section="2">Services</a></li>
                     <li data-name="gallery"><a href="#" data-section="3">Gallery</a></li>

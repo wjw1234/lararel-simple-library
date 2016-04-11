@@ -27,6 +27,10 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 // only logged in users
 Route::group(['middleware' => 'auth'], function () {
     Route::get('dashboard', 'AdminController@home');
+    Route::get('dashboard/book', 'AdminController@bookManage');
+    Route::post('dashboard/book', 'AdminController@bookCreate');
+    Route::get('dashboard/bookDelete/{id}', 'AdminController@bookDelete');
+    Route::get('dashboard/book/{id}/edit', 'AdminController@bookEdit');
     Route::get('dashboard/book/{id}', 'AdminController@book');
     Route::post('dashboard/book/{id}', 'AdminController@bookSave');
     Route::get('dashboard/settings', 'AdminController@settings');

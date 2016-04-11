@@ -29,11 +29,13 @@
                 @if (Auth::check())
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Slideshows <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 @foreach ($books as $book)
                                     <li class="{!! isset($currentbook) && $currentbook->id == $book->id ? 'active' : null !!}"><a href="/dashboard/book/{!! $book->id  !!}">{!! $book->title !!}</a></li>
                                 @endforeach
+                                <hr />
+                                <li class="create-book"><a href="/dashboard/book">Manage slideshows</a></li>
                             </ul>
                         </li>
                         <li class="{!! isset($page) && $page == 'images' ? 'active' : null !!}"><a href="/dashboard/images">Images</a></li>

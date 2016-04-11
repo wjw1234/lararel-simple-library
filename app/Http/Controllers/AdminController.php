@@ -35,6 +35,23 @@ class AdminController extends Controller
         return view('admin.book', ['currentbook'=>$book,'books'=>$this->books,'images'=>$this->files]);
     }
 
+    public function bookManage() {
+        return view('admin.bookManage', ['books'=>$this->books]);
+    }
+
+    public function bookCreate(Request $request) {
+        $inputs = $request->all();
+        $book = new Book();
+        $book->title = $inputs['title'];
+        $book->save();
+        return redirect('dashboard/book');
+    }
+
+    public function bookDelete($id) {
+        $book = Book::find($id)->delete();
+        return redirect('dashboard/book');
+    }
+
     public function settings() {
         $s = Setting::first();
     	return view('admin.settings', ['page'=>'settings','books'=>$this->books,'settings'=>$s]);
