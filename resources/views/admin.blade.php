@@ -37,6 +37,7 @@
                                     @endforeach
                                 @endif
                                 <hr />
+                                <li><a href="{!! URL::route('album_order') !!}">Set album order</a></li>
                                 <li class="{!! isset($page) && $page == 'albums' ? 'active' : null !!}"><a href="/dashboard/albums">All albums</a></li>
                                 <li><a href="{!! URL::route('create_album_form') !!}">Create New Album</a></li>
                             </ul>

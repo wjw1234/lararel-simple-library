@@ -13,6 +13,6 @@ class Album extends Model {
 
   public function Photos(){
 
-    return $this->hasMany('App\Image');
+    return $this->hasMany('App\Image')->orderBy('order');
   }
 }

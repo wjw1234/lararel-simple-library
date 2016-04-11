@@ -45,6 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('dashboard/slide/{id}/edit', 'AdminController@slideEdit');
 
     Route::get('/dashboard/albums', array('as' => 'index','uses' => 'AlbumsController@getList'));
+    Route::get('/dashboard/orderalbums', array('as' => 'album_order','uses' => 'AlbumsController@order'));
+    Route::post('/dashboard/orderalbums', array('as' => 'album_order','uses' => 'AlbumsController@orderSet'));
     Route::get('/createalbum', array('as' => 'create_album_form','uses' => 'AlbumsController@getForm'));
     Route::post('/createalbum', array('as' => 'create_album','uses' => 'AlbumsController@postCreate'));
     Route::get('/deletealbum/{id}', array('as' => 'delete_album','uses' => 'AlbumsController@getDelete'));

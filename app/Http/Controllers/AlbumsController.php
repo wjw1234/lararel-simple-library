@@ -7,6 +7,7 @@ use App\Image;
 use Validator;
 use Input;
 use Redirect;
+use Illuminate\Http\Request;
 
 class AlbumsController extends Controller{
 
@@ -19,7 +20,7 @@ class AlbumsController extends Controller{
     {
         //$this->books = Book::get();
         //$this->files = File::get();
-        $this->albums = Album::with('Photos')->get();
+        $this->albums = Album::with('Photos')->orderBy('order')->get();
     }
 
   public function getList()
@@ -77,4 +78,32 @@ class AlbumsController extends Controller{
 
     return Redirect::route('index');
   }
+
+  public function order() {
+    return view('admin.albumOrder', ['albums'=>$this->albums]);
+  }
+
+  public function orderSet(Request $request) {
+        
+        $json = $request->input('json');
+        $object = json_decode($json);
+        foreach ($object as $albumOrder => $albumObject) {
+            $album_id = $albumObject->id;
+            $album = Album::find(intval($album_id));
+            if ($album) {
+                var_dump($albumObject->id);
+                var_dump($albumOrder);
+                $album->order = $albumOrder;
+                $album->save();
+                foreach ($albumObject->images as $imageOrder => $imageId) {
+                    $image = Image::find($imageId);
+                    if ($image) {
+                        $image->order = $imageOrder;
+                        $image->save();
+                    }
+                }
+            }
+            
+        }
+    }
 }

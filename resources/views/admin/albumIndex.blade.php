@@ -4,7 +4,13 @@
 
       <div class="container">
     
-        <div class="starter-template">
+        <div class="row">
+
+          <div class="col-md-12">
+              <h2>All Albums</h2>
+          </div>
+
+        </div>
       
         <div class="row">
           @foreach($albums as $album)
@@ -24,6 +30,5 @@
         </div>
     
       </div><!-- /.container -->
-    </div>
     
 @endsection

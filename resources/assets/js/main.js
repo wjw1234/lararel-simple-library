@@ -100,7 +100,7 @@ $('#saveLayout').on('click',function(){
 	'json');
 });
 
-if ($('#fullpage').length) {
+if (exists('#fullpage')) {
 	$('#fullpage').fullpage({
 		navigation: false,
 		anchors: ['about', 'services', 'gallery', 'contact'],
@@ -132,3 +132,57 @@ $('.open-lightbox').on('click', function(){
 	$('.gallery-' + id).first().click();
 });
 
+// deal with album dragging
+if (exists('#albums-order')) {
+	Sortable.create(byId('albums-order'), {
+		handle: '.drag-handle',
+		animation: 150,
+		group: {
+			name: 'slides-order'
+		},
+		onSort: function (evt) {
+    		saveGalleryOrder();
+    	},
+	});
+}
+
+// make images draggable too
+if (exists('.images-draggable')) {
+	$('.images-draggable').each(function(){
+		Sortable.create(byId($(this).attr('id')), {
+			sort: true,
+			group: {
+				name: 'slides-images-' + $(this).attr('id'),
+			},
+			animation: 150,
+    		onSort: function (evt) {
+    			saveGalleryOrder();
+    		},
+		});
+	});
+}
+
+// save the entire gallery order
+function saveGalleryOrder() {
+	var array = [];
+	// loop through slides
+	$('#albums-order li.album').each(function(){
+		var id = $(this).attr('id');
+		id = id.replace(/[^0-9.]/g, '');
+		var images = [];
+		$('ul li', this).each(function(){
+			var image_id = $(this).attr('id');
+			image_id = image_id.replace(/[^0-9.]/g, '');
+			images.push(image_id);
+		});
+		array.push({'id': id, 'images': images});
+	});
+	var url = window.location.href;
+	var token = $('meta[name="csrf-token"]').attr('content');
+	var data = {'_token': token, 'json': JSON.stringify(array)};
+	$.post(url, data,
+		function(){
+			
+		},
+	'json');
+}

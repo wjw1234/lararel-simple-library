@@ -26,7 +26,7 @@ class AdminController extends Controller
     {
         $this->books = Book::get();
         $this->files = File::get();
-        $this->albums = Album::get();
+        $this->albums = Album::orderBy('order')->get();
     }
 
     public function home() {
