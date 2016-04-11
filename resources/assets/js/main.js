@@ -109,7 +109,7 @@ $(document).ready(function() {
 	}
 });
 
-$('#fullpage-menu .navbar-nav a').on('click', function(e){
+$('#fullpage-menu a').on('click', function(e){
 	e.preventDefault();
 	var section = $(this).attr('data-section');
 	$.fn.fullpage.moveTo(parseInt(section, 10));
@@ -122,4 +122,9 @@ $(window).on('hashchange',function(){
 			$(this).addClass('active');
 		}
 	});
+});
+
+$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
 });

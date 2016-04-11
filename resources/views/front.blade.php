@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css">
         <link rel="stylesheet" href="{{elixir("css/app.css")}}">
     </head>
     <body class="main">
@@ -59,20 +60,22 @@
                 </div>
             </div>
             <div class="section section-gallery">
-            @foreach($albums as $album)
-            <div class="col-lg-3">
-              <div class="thumbnail" style="min-height: 514px;">
-                <img alt="{{$album->name}}" src="/albums/{{$album->cover_image}}">
-                <div class="caption">
-                  <h3>{{$album->name}}</h3>
-                  <p>{{$album->description}}</p>
-                  <p>{{count($album->Photos)}} image(s).</p>
-                  <p>Created date:  {{ date("d F Y",strtotime($album->created_at)) }} at {{date("g:ha",strtotime($album->created_at)) }}</p>
-                  <p><a href="{{URL::route('show_album', array('id'=>$album->id))}}" class="btn btn-big btn-default">Show Gallery</a></p>
-                </div>
-              </div>
-            </div>
-            @endforeach
+                @foreach ($albums->chunk(4) as $chunk)
+                    <div class="row">
+                        @foreach($chunk as $album)
+                            <div class="col-md-3">
+                                <div class="album">
+                                    <img alt="{{$album->name}}" src="/albums/{{$album->cover_image}}">
+                                    <h3>{!! $album->name !!}</h3>
+                                    <p>{!! $album->description !!}</p>
+                                    @foreach ($album->Photos as $photo)
+                                        <a data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="/albums/{!! $photo->image !!}">1</a>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
             <div class="section section-contact">
                 <div class="container">
@@ -136,6 +139,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js"></script>
         <script type="text/javascript" src="{{elixir("js/all.js")}}"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
