@@ -131,3 +131,4 @@ $('.open-lightbox').on('click', function(){
 	var id = $(this).attr('data-lightbox-id');
 	$('.gallery-' + id).first().click();
 });
+
