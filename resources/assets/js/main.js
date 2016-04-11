@@ -100,14 +100,12 @@ $('#saveLayout').on('click',function(){
 	'json');
 });
 
-$(document).ready(function() {
-	if ($('#fullpage').length) {
-		$('#fullpage').fullpage({
-			navigation: false,
-			anchors: ['about', 'services', 'gallery', 'contact'],
-		});
-	}
-});
+if ($('#fullpage').length) {
+	$('#fullpage').fullpage({
+		navigation: false,
+		anchors: ['about', 'services', 'gallery', 'contact'],
+	});
+}
 
 $('#fullpage-menu a').on('click', function(e){
 	e.preventDefault();
@@ -127,4 +125,9 @@ $(window).on('hashchange',function(){
 $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
     event.preventDefault();
     $(this).ekkoLightbox();
+});
+
+$('.open-lightbox').on('click', function(){
+	var id = $(this).attr('data-lightbox-id');
+	$('.gallery-' + id).first().click();
 });
