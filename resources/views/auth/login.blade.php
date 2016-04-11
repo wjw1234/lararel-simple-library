@@ -8,7 +8,7 @@
             <form role="form" method="POST" action="/auth/login">
                 {!! csrf_field() !!}
                 <div class="form-group">
-                    <input type="email" name="email" placeholder="Email" class="form-control" value="{{ old('email') }}">
+                    <input type="email" name="email" placeholder="Email" class="form-control" value="{!! old('email') !!}">
                 </div>
                 <div class="form-group">
                     <input type="password" name="password" placeholder="Password" class="form-control">

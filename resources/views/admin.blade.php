@@ -10,8 +10,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{elixir("css/app.css")}}">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="stylesheet" href="{!! elixir("css/app.css") !!}">
+        <meta name="csrf-token" content="{!! csrf_token() !!}">
     </head>
     <body class="admin">
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -70,7 +70,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/Sortable/1.4.2/Sortable.min.js"></script>
-        <script type="text/javascript" src="{{elixir("js/all.js")}}"></script>
+        <script type="text/javascript" src="{!! elixir("js/all.js") !!}"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
