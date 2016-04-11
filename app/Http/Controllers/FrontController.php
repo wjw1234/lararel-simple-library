@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\Book;
 use App\Setting;
 
@@ -27,7 +28,8 @@ class FrontController extends Controller
     	//$books = Book::get();
     	//$currentbook = Book::first();
       //return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
-      return view('front');
+      $albums = Album::with('Photos')->get();
+      return view('front', ['albums'=>$albums]);
     }
 
     public function book($id) {

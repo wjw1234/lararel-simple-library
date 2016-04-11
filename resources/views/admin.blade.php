@@ -29,16 +29,31 @@
                 @if (Auth::check())
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Albums <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @if (isset($albums) && count($albums))
+                                    @foreach($albums as $album)
+                                       <li><a href="{!! URL::route('show_album', array('id'=>$album->id)) !!}">{!! $album->name !!}</a></li>
+                                    @endforeach
+                                @endif
+                                <hr />
+                                <li class="{!! isset($page) && $page == 'albums' ? 'active' : null !!}"><a href="/dashboard/albums">All albums</a></li>
+                                <li><a href="{!! URL::route('create_album_form') !!}">Create New Album</a></li>
+                            </ul>
+                        </li>
+                        {{--<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Slideshows <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                @foreach ($books as $book)
-                                    <li class="{!! isset($currentbook) && $currentbook->id == $book->id ? 'active' : null !!}"><a href="/dashboard/book/{!! $book->id  !!}">{!! $book->title !!}</a></li>
-                                @endforeach
+                                @if (isset($books) && count($books))
+                                    @foreach ($books as $book)
+                                        <li class="{!! isset($currentbook) && $currentbook->id == $book->id ? 'active' : null !!}"><a href="/dashboard/book/{!! $book->id  !!}">{!! $book->title !!}</a></li>
+                                    @endforeach
+                                @endif
                                 <hr />
                                 <li class="create-book"><a href="/dashboard/book">Manage slideshows</a></li>
                             </ul>
-                        </li>
-                        <li class="{!! isset($page) && $page == 'images' ? 'active' : null !!}"><a href="/dashboard/images">Images</a></li>
+                        </li>--}}
+                        {{--<li class="{!! isset($page) && $page == 'images' ? 'active' : null !!}"><a href="/dashboard/images">Images</a></li>--}}
                         <li class="{!! isset($page) && $page == 'settings' ? 'active' : null !!}"><a href="/dashboard/settings">Settings</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

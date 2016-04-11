@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Album;
 use App\Book;
 use App\File;
 use App\Slide;
@@ -19,24 +20,26 @@ class AdminController extends Controller
     protected $books;
     protected $slides;
     protected $files;
+    protected $albums;
 
     public function __construct()
     {
         $this->books = Book::get();
         $this->files = File::get();
+        $this->albums = Album::get();
     }
 
     public function home() {
-        return view('admin.home', ['books'=>$this->books]);
+        return view('admin.home', ['books'=>$this->books, 'albums'=>$this->albums]);
     }
 
     public function book($id) {
     	$book = Book::where('id',$id)->firstOrFail();
-        return view('admin.book', ['currentbook'=>$book,'books'=>$this->books,'images'=>$this->files]);
+        return view('admin.book', ['currentbook'=>$book,'books'=>$this->books,'images'=>$this->files, 'albums'=>$this->albums]);
     }
 
     public function bookManage() {
-        return view('admin.bookManage', ['books'=>$this->books]);
+        return view('admin.bookManage', ['books'=>$this->books, 'albums'=>$this->albums]);
     }
 
     public function bookCreate(Request $request) {
@@ -54,15 +57,15 @@ class AdminController extends Controller
 
     public function settings() {
         $s = Setting::first();
-    	return view('admin.settings', ['page'=>'settings','books'=>$this->books,'settings'=>$s]);
+    	return view('admin.settings', ['page'=>'settings','books'=>$this->books,'settings'=>$s, 'albums'=>$this->albums]);
     }
 
     public function images() {
-        return view('admin.images', ['page'=>'images','books'=>$this->books,'images'=>$this->files]);
+        return view('admin.images', ['page'=>'images','books'=>$this->books,'images'=>$this->files, 'albums'=>$this->albums]);
     }
 
     public function image($id) {
-        return view('admin.image', ['currentbook'=>$id,'books'=>$this->books]);
+        return view('admin.image', ['currentbook'=>$id,'books'=>$this->books, 'albums'=>$this->albums]);
     }
 
     public function slideCreate($id) {

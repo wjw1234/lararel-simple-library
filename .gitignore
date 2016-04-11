@@ -13,3 +13,4 @@ Homestead.json
 /public/build/js/*
 /public/build/rev-manifest.json
 /public/images/uploaded/*
+/public/albums/*

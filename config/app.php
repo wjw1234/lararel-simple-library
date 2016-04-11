@@ -145,7 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        'AdamWathan\BootForms\BootFormsServiceProvider'
+        'AdamWathan\BootForms\BootFormsServiceProvider',
+        'Illuminate\Html\HtmlServiceProvider'
 
     ],
 
@@ -196,7 +197,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
-        'BootForm' => 'AdamWathan\BootForms\Facades\BootForm'
+        'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
+        'Form'=> 'Illuminate\Html\FormFacade',
+        'HTML'=> 'Illuminate\Html\HtmlFacade'
 
     ],
 
