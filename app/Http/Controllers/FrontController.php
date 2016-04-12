@@ -14,9 +14,11 @@ class FrontController extends Controller
     	//$books = Book::get();
     	//$currentbook = Book::first();
       //return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+      $settings = Setting::first();
+      if (!$settings) return redirect('/auth/login');
       return view('front', [
                             'albums'   => Album::with('Photos')->get(),
-                            'settings' => $settings = Setting::first()
+                            'settings' => $settings,
                             ]);
     }
 
