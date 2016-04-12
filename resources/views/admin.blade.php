@@ -23,7 +23,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/dashboard">Dashboard</a>
+              <a class="navbar-brand" href="{!! url('/dashboard') !!}">Dashboard</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 @if (Auth::check())
@@ -38,7 +38,7 @@
                                 @endif
                                 <hr />
                                 <li><a href="{!! URL::route('album_order') !!}">Set album order</a></li>
-                                <li class="{!! isset($page) && $page == 'albums' ? 'active' : null !!}"><a href="/dashboard/albums">All albums</a></li>
+                                <li class="{!! isset($page) && $page == 'albums' ? 'active' : null !!}"><a href="{!! url('/dashboard/albums') !!}">All albums</a></li>
                                 <li><a href="{!! URL::route('create_album_form') !!}">Create New Album</a></li>
                             </ul>
                         </li>
@@ -55,10 +55,10 @@
                             </ul>
                         </li>--}}
                         {{--<li class="{!! isset($page) && $page == 'images' ? 'active' : null !!}"><a href="/dashboard/images">Images</a></li>--}}
-                        <li class="{!! isset($page) && $page == 'settings' ? 'active' : null !!}"><a href="/dashboard/settings">Settings</a></li>
+                        <li class="{!! isset($page) && $page == 'settings' ? 'active' : null !!}"><a href="{!! url('/dashboard/settings') !!}">Settings</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/auth/logout">Logout</a></li>
+                        <li><a href="{!! url('/auth/logout') !!}">Logout</a></li>
                     </ul>
                 @endif
             </div><!--/.navbar-collapse -->

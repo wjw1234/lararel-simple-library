@@ -78,7 +78,7 @@
                                         <h3 class="album-title">{!! $album->name !!}</h3>
                                         <p class="album-description">{!! $album->description !!}</p>
                                         @foreach ($album->Photos as $photo)
-                                            <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="/albums/{!! $photo->image !!}"></a>
+                                            <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="{!! url('/albums/' . $photo->image) !!}"></a>
                                         @endforeach
                                     </div>
                                 </div>

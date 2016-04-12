@@ -12,14 +12,14 @@ class FrontController extends Controller
 
     public function home() {
     	//$books = Book::get();
-    	//$currentbook = Book::first();
-      //return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
-      $settings = Setting::first();
-      if (!$settings) return redirect('/auth/login');
-      return view('front', [
-                            'albums'   => Album::with('Photos')->get(),
-                            'settings' => $settings,
-                            ]);
+        //$currentbook = Book::first();
+        //return view('front.book', ['books'=>$books, 'settings'=>$settings,'currentbook'=>$currentbook]);
+        $settings = Setting::first();
+        if (!$settings) return redirect(url('/auth/login'));
+        return view('front', [
+                        'albums'   => Album::with('Photos')->get(),
+                        'settings' => $settings,
+                    ]);
     }
 
     public function book($id) {
