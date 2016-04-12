@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css">
-        <link rel="stylesheet" href="{!! elixir("css/app.css") !!}">
+        <link rel="stylesheet" href="{!! asset(elixir("css/app.css")) !!}">
     </head>
     <body class="main">
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -149,7 +149,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.7.9/jquery.fullPage.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js"></script>
-        <script type="text/javascript" src="{!! elixir("js/all.js") !!}"></script>
+        <script type="text/javascript" src="{!! asset(elixir("js/all.js")) !!}"></script>
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
             function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
