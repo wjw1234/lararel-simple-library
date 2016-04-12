@@ -186,3 +186,7 @@ function saveGalleryOrder() {
 		},
 	'json');
 }
+
+$('.scroll-barrier').on('click', function(){
+	$(this).remove();
+})

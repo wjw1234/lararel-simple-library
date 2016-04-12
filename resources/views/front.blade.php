@@ -88,13 +88,16 @@
                         <div class="col-md-6">
                             <h4>Address</h4>
                             <p>{!! nl2br($settings->address) !!}</p>
-                            <iframe
-                              width="600"
-                              height="450"
-                              frameborder="0" style="border:0"
-                              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCgCZHxAxNfU7Om1NGXOhgB7mv4Slb0QIE
-                                &q=hammer+lab%2C+116+Cremer+business+centre%2C+37+cremer+street%2C+london%2C+E2+8HD" allowfullscreen>
-                            </iframe>
+                            <div class="maps-overlay">
+                                <div class="scroll-barrier"></div>
+                                <iframe
+                                  width="600"
+                                  height="450"
+                                  frameborder="0" style="border:0"
+                                  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCgCZHxAxNfU7Om1NGXOhgB7mv4Slb0QIE
+                                    &q=hammer+lab%2C+116+Cremer+business+centre%2C+37+cremer+street%2C+london%2C+E2+8HD" allowfullscreen>
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
