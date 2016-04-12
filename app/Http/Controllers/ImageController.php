@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Album;
-use App\Image;
+use App\Image as Images;
 use Validator;
 use Redirect;
 use Input;
+use Image;
 
 class ImagesController extends Controller{
 
@@ -40,7 +41,16 @@ class ImagesController extends Controller{
     $extension = $file->getClientOriginalExtension();
     $filename=$random_name.'_album_image.'.$extension;
     $uploadSuccess = Input::file('image')->move($destinationPath, $filename);
-    Image::create(array(
+
+    $img = Image::make($destinationPath . $filename);
+    $img->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
+    $filename200=$random_name.'_album_image.200.'.$extension;
+    $img->save($destinationPath . $filename200);
+
+    Images::create(array(
       'description' => Input::get('description'),
       'image' => $filename,
       'album_id'=> Input::get('album_id')
@@ -50,7 +60,7 @@ class ImagesController extends Controller{
   }
   public function getDelete($id)
   {
-    $image = Image::find($id);
+    $image = Images::find($id);
 
     $image->delete();
     
@@ -67,7 +77,7 @@ class ImagesController extends Controller{
     
       return Redirect::route('index');
     }
-    $image = Image::find(Input::get('photo'));
+    $image = Images::find(Input::get('photo'));
     $image->album_id = Input::get('new_album');
     $image->save();
     return Redirect::route('show_album',array('id'=>Input::get('new_album')));

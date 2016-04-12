@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Album;
-use App\Image;
+use App\Image as Images;
 use Validator;
 use Input;
 use Redirect;
 use Illuminate\Http\Request;
+use Image;
 
 class AlbumsController extends Controller{
 
@@ -61,6 +62,15 @@ class AlbumsController extends Controller{
     $filename=$random_name.'_cover.'.$extension;
     $uploadSuccess = Input::file('cover_image')
     ->move($destinationPath, $filename);
+
+    $img = Image::make($destinationPath . $filename);
+    $img->resize(200, null, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
+    $filename200=$random_name.'_cover.200.'.$extension;
+    $img->save($destinationPath . $filename200);
+
     $album = Album::create(array(
       'name' => Input::get('name'),
       'description' => Input::get('description'),
@@ -96,7 +106,7 @@ class AlbumsController extends Controller{
                 $album->order = $albumOrder;
                 $album->save();
                 foreach ($albumObject->images as $imageOrder => $imageId) {
-                    $image = Image::find($imageId);
+                    $image = Images::find($imageId);
                     if ($image) {
                         $image->order = $imageOrder;
                         $image->save();

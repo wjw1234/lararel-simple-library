@@ -148,7 +148,8 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         'AdamWathan\BootForms\BootFormsServiceProvider',
-        'Collective\Html\HtmlServiceProvider'
+        'Collective\Html\HtmlServiceProvider',
+        Intervention\Image\ImageServiceProvider::class
 
     ],
 
@@ -201,7 +202,8 @@ return [
 
         'BootForm' => 'AdamWathan\BootForms\Facades\BootForm',
         'Form'=> 'Collective\Html\FormFacade',
-        'HTML'=> 'Collective\Html\HtmlFacade'
+        'HTML'=> 'Collective\Html\HtmlFacade',
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
