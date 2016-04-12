@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
     <head>
+        <!-- github.com/ElliottLandsborough -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title></title>
@@ -26,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Hammer Lab</a>
+                <a class="navbar-brand" href="{!! url('/') !!}">{!! $settings->site_title !!}</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="fullpage-menu">
@@ -40,7 +41,13 @@
 
         <div id="fullpage">
             <div class="section section-about">
-                Hammer Lab is a photographic processing and print lab also offering services in retouching, drum scanning and digital printing.
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            Hammer Lab is a photographic processing and print lab also offering services in retouching, drum scanning and digital printing.
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="section section-services">
                 <div class="container">
@@ -61,22 +68,24 @@
                 </div>
             </div>
             <div class="section section-gallery">
-                @foreach ($albums->chunk(4) as $chunk)
-                    <div class="row">
-                        @foreach($chunk as $album)
-                            <div class="col-md-3">
-                                <div class="album">
-                                    <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}"><img alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image!!}"></a>
-                                    <h3 class="album-title">{!! $album->name !!}</h3>
-                                    <p class="album-description">{!! $album->description !!}</p>
-                                    @foreach ($album->Photos as $photo)
-                                        <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="/albums/{!! $photo->image !!}"></a>
-                                    @endforeach
+                <div class="container">
+                    @foreach ($albums->chunk(4) as $chunk)
+                        <div class="row">
+                            @foreach($chunk as $album)
+                                <div class="col-md-3">
+                                    <div class="album">
+                                        <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}"><img alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image!!}"></a>
+                                        <h3 class="album-title">{!! $album->name !!}</h3>
+                                        <p class="album-description">{!! $album->description !!}</p>
+                                        @foreach ($album->Photos as $photo)
+                                            <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="/albums/{!! $photo->image !!}"></a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endforeach
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
             </div>
             <div class="section section-contact">
                 <div class="container">
@@ -106,9 +115,6 @@
 
         <?php /*
         <div class="col-md-3 col-sm-3">
-            @if (strlen($settings->site_title))
-                <h1>{!! $settings->site_title !!}</h1>
-            @endif
             <ul class="menu">
                 <li>Stories
                     <ul>
@@ -154,9 +160,3 @@
         </script>
     </body>
 </html>
-
-
-
-
-
-<!-- github.com/ElliottLandsborough -->
