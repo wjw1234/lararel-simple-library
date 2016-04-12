@@ -12,8 +12,8 @@
 */
 
 Route::get('/', 'FrontController@home');
-Route::get('/book/{id}', 'FrontController@book');
-Route::get('/info', 'FrontController@info');
+//Route::get('/book/{id}', 'FrontController@book');
+//Route::get('/info', 'FrontController@info');
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
