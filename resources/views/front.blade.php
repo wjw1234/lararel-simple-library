@@ -46,7 +46,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
-                            <ul>
+                            <h4>Services</h4>
+                            <ul class="services">
                                 <li>Drum Scanning</li>
                                 <li>Printing</li>
                                 <li>Digital Printing</li>
@@ -65,9 +66,9 @@
                         @foreach($chunk as $album)
                             <div class="col-md-3">
                                 <div class="album">
-                                    <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}"><img alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image!!}">
-                                    <h3>{!! $album->name !!}</h3>
-                                    <p>{!! $album->description !!}</p>
+                                    <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}"><img alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image!!}"></a>
+                                    <h3 class="album-title">{!! $album->name !!}</h3>
+                                    <p class="album-description">{!! $album->description !!}</p>
                                     @foreach ($album->Photos as $photo)
                                         <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="/albums/{!! $photo->image !!}"></a>
                                     @endforeach
@@ -82,12 +83,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>For any questions please contact us on:</p>
-                            <p>hammerlabs@mac.com</p>
+                            <p>{!! $settings->safeEmailScript() !!}</p>
                         </div>
                         <div class="col-md-6">
-                            <p>Address</p>
-                            <p>116, Cremer Business Centre,<br />
-                            37 Cremer St, London E2 8HD</p>
+                            <h4>Address</h4>
+                            <p>{!! nl2br($settings->address) !!}</p>
                             <iframe
                               width="600"
                               height="450"
