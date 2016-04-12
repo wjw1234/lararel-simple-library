@@ -6,7 +6,7 @@
     
       <div class="starter-template">
         <div class="media">
-          <img class="media-object pull-left"alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image !!}" width="350px">
+          <img class="media-object pull-left"alt="{!! $album->name !!}" src="{!! url('/albums/' . $album->cover_image) !!}" width="350px">
           <div class="media-body">
             <h2 class="media-heading" style="font-size: 26px;">Album Name:</h2>
             <p>{!! $album->name !!}</p>
@@ -23,7 +23,7 @@
         @foreach($album->Photos as $photo)
           <div class="col-lg-3">
             <div class="thumbnail" style="max-height: 350px;min-height: 350px;">
-              <img alt="{!! $album->name !!}" src="/albums/{!! $photo->image !!}">
+              <img alt="{!! $album->name !!}" src="{!! url('/albums/' . $photo->image) !!}">
               <div class="caption">
                 <p>{!! $photo->description !!}</p>
                 <p>Created date:  {!! date("d F Y",strtotime($photo->created_at)) !!}at {!! date("g:ha",strtotime($photo->created_at)) !!}</p>
