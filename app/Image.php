@@ -15,5 +15,10 @@ class Image extends Model {
   		$path_parts = pathinfo($this->image);
   		return $path_parts['filename'] . '.200.' . $path_parts['extension'];
   	}
+
+  	public function image1200() {
+  		$path_parts = pathinfo($this->image);
+  		return $path_parts['filename'] . '.1200.' . $path_parts['extension'];
+  	}
   
 }

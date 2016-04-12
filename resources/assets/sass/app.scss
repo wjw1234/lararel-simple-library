@@ -58,6 +58,16 @@ body.main {
 			height: 100%;
 		}
 	}
+	.open-lightbox {
+		width: 100%;
+		display: block;
+		max-width: 200px;
+		height: 200px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		margin: 0px auto;
+	}
 	/*
 	
 	margin-top: 0px;

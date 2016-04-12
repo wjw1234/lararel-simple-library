@@ -74,11 +74,11 @@
                             @foreach($chunk as $album)
                                 <div class="col-md-3">
                                     <div class="album">
-                                        <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}"><img alt="{!! $album->name !!}" src="/albums/{!! $album->cover_image!!}"></a>
+                                        <a href="#" class="open-lightbox" data-lightbox-id="{!! $album->id !!}" style="background-image:url({!! url('/albums/' . $album->coverImage200()) !!});"></a>
                                         <h3 class="album-title">{!! $album->name !!}</h3>
                                         <p class="album-description">{!! $album->description !!}</p>
                                         @foreach ($album->Photos as $photo)
-                                            <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="{!! url('/albums/' . $photo->image) !!}"></a>
+                                            <a class="gallery-{!! $album->id !!}" data-toggle="lightbox" data-gallery="gallery-{!! $album->id !!}" data-type="image" data-title="{!! $photo->description !!}" href="{!! url('/albums/' . $photo->image1200()) !!}"></a>
                                         @endforeach
                                     </div>
                                 </div>

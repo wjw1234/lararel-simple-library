@@ -50,6 +50,14 @@ class ImagesController extends Controller{
     $filename200=$random_name.'_album_image.200.'.$extension;
     $img->save($destinationPath . $filename200);
 
+    $img = Image::make($destinationPath . $filename);
+    $img->resize(1200, null, function ($constraint) {
+        $constraint->aspectRatio();
+        $constraint->upsize();
+    });
+    $filename1200=$random_name.'_album_image.1200.'.$extension;
+    $img->save($destinationPath . $filename1200);
+
     Images::create(array(
       'description' => Input::get('description'),
       'image' => $filename,
