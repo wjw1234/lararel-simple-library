@@ -160,5 +160,33 @@ body.admin {
 			cursor: pointer;
 		}
 	}
+	.dashboard-album-cover {
+		width: 165px;
+		height: 165px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		margin-right: 20px;
+		border: 1px solid #aaa;
+	}
 
+	.dashboard-album-image {
+		width: 100%;
+		display: block;
+		margin: 0 auto 10px;
+		max-width: 200px;
+		height: 200px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		margin-right: 20px;
+		border: 1px solid #aaa;
+	}
+
+	.dashboard-image-description {
+		margin: 10px 0 10px 0;
+		border: 1px solid #aaa;
+		padding: 10px;
+		text-align: center;
+	}
 }
